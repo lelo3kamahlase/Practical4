@@ -1,0 +1,47 @@
+@model List<YourProject.Models.Person>
+@{
+    ViewBag.Title = "Study Buddies";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Study Buddies</h2>
+
+<table class="table table-bordered" id="buddiesTable">
+    <thead>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Sarah</td>
+            <td>Smith</td>
+            <td><button class="btn btn-danger" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+        <tr>
+            <td>John</td>
+            <td>Doe</td>
+            <td><button class="btn btn-danger" onclick="deleteRow(this)">Delete</button></td>
+        </tr>
+    </tbody>
+</table>
+
+@section Scripts {
+<script>
+    // Requirement 7: Delete row function
+    function deleteRow(btn) {
+        btn.closest('tr').remove();
+    }
+
+    // Requirement 8: Color 'S' names red
+    document.addEventListener('DOMContentLoaded', function() {
+        document.querySelectorAll('#buddiesTable tbody tr').forEach(row => {
+            if (row.cells[0].textContent.trim().startsWith('S')) {
+                row.style.color = 'red';
+            }
+        });
+    });
+</script>
+}
